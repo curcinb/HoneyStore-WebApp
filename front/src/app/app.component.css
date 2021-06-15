@@ -1,0 +1,47 @@
+nav{
+    position:sticky;
+    z-index: 9999; 
+    border-bottom: 1px solid red;
+    width: 100%;
+    height: 120px;
+    background-color: #0005;
+    line-height: 50px;
+    color: black;
+}
+
+nav a{
+    font-weight: bold;
+    color: black;
+}
+
+h1{
+    text-align : center;
+}
+
+nav ul{
+    float: right;
+    color: black;
+}
+
+nav ul li{
+    list-style-type: none;
+    transition: 0.7s all;
+    color: black;
+}
+
+nav ul li:hover{
+    background-color:rgb(245, 140, 41);
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #fff;
+    padding: 15px;
+}
+
+footer{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}

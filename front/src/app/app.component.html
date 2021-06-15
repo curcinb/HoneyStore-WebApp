@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-md navbar-warning bg-warning" id='navigacija' style="border-bottom: 5px;">
+  <a class="navbar-brand" routerLink=''>
+    <img src="../../../assets/logo.png" width="150" height="120" class="d-inline-block align-top" alt="">
+  </a>
+
+  <a routerLink=''>
+    Medenjaci
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav mr-auto"></ul>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink='' routerLinkActive='activeLink' [routerLinkActiveOptions]="{exact: true}"
+          style="color: black;">
+          Početna
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink='/korpa' routerLinkActive='activeLink' [routerLinkActiveOptions]="{exact: true}"
+          style="color: black;">
+          Korpa
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink='/porudzbine' routerLinkActive='activeLink'
+          [routerLinkActiveOptions]="{exact: true}" style="color: black;"
+          *ngIf='korisnik!=null && korisnik.privilegovani==1'>
+          Porudžbine
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink='/profil' routerLinkActive='activeLink' [routerLinkActiveOptions]="{exact: true}"
+          style="color: black;" *ngIf='korisnik'>
+          Profil
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink='/login' routerLinkActive='activeLink' [routerLinkActiveOptions]="{exact: true}"
+          style="color: black;" *ngIf='!korisnik'>
+          Prijava
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" (click)='logout()' style="color: black;" *ngIf='korisnik'>
+          Odjava
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Ovde ce da se prikazuju sve komponente-->
+<router-outlet></router-outlet>
+
+<footer class="footer bg-light text-center text-lg-start">
+  <div class="text-center p-3">
+    <span class="text-muted">PKI 2021 © Copyright Boško Ćurčin, SI ETF. </span>
+  </div>
+</footer>

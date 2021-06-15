@@ -1,0 +1,5 @@
+C:\Users\Korisnik1\AppData\Roaming\npm\tsc
+
+Fix za datum!
+SET SESSION sql_mode = 'NO_ENGINE_SUBSTITUTION';
+SET GLOBAL sql_mode = 'NO_ENGINE_SUBSTITUTION';

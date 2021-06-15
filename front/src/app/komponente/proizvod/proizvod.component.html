@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Prikaz proizvoda</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <main class="d-flex align-items-center py-3 py-md-0">
+        <div class="container">
+            <br><br>
+            <div class="card login-card">
+                <div class="row no-gutters">
+                    <div class="col-md-5">
+                        <img src="../../../assets/{{proizvod.slika}}.png" alt="login" class="login-card-img">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card-body">
+                            <div class="brand-wrapper">
+                                <h3>{{proizvod.naziv}}</h3>
+                            </div>
+                            <p class="login-card-description">Molimo Vas da se ulogujete.</p>
+                            <p class="login-card-description">Molimo Vas da se ulogujete.</p>
+                            <p>Molimo Vas da se ulogujete</p>
+                            <form action="#">
+                                <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit"
+                                    value="Dodaj u korpu" (click)='proba()'>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

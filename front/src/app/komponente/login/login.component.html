@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <main class="d-flex align-items-center py-3 py-md-0">
+        <div class="container">
+            <br><br>
+            <div class="card login-card">
+                <div class="row no-gutters">
+                    <div class="col-md-5">
+                        <img src="../../../assets/honey.jpg" alt="login" class="login-card-img">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card-body">
+                            <div class="brand-wrapper">
+                                <h3>Dobrodošli!</h3>
+                            </div>
+                            <p class="login-card-description">Molimo Vas da se ulogujete.</p>
+                            <form action="#">
+                                <div class="form-group">
+                                    <label for="korime" class="sr-only">Korime</label>
+                                    <input type="korime" name="korime" id="korime" class="form-control"
+                                        placeholder="Korisničko ime" [(ngModel)]='korime'>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label for="lozinka" class="sr-only">Lozinka</label>
+                                    <input type="password" name="lozinka" id="lozinka" class="form-control"
+                                        placeholder="***********" [(ngModel)]='lozinka'>
+                                </div>
+                                <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit"
+                                    value="Login" (click)='login()'>
+                            </form>
+                            <a href="/login" class="forgot-password-link"><b>Zaboravljena lozinka?</b></a>
+                            <p class="login-card-footer-text">
+                                Nemaš nalog? <a href="/login" class="text-reset"><b>Registruj se ovde.</b></a>
+                            </p>
+                            <span style='color: red'>
+                                {{poruka}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

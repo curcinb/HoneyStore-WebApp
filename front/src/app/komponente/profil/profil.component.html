@@ -1,0 +1,101 @@
+<html>
+
+<head>
+    <title>Pregled profila</title>
+</head>
+
+<body>
+    <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container d-flex justify-content-center">
+                <div class="col-xl-6 col-md-12">
+                    <div class="card user-card-full">
+                        <div class="row m-l-0 m-r-0">
+                            <div class="col-sm-4 bg-c-lite-green user-profile">
+                                <div class="card-block text-center text-white">
+                                    <div class="m-b-25"> <img src="https://img.icons8.com/bubbles/100/000000/user.png"
+                                            class="img-radius" alt="User-Profile-Image"> </div>
+                                    <p> </p>
+                                    <p><b style="color: black;">{{korisnik.ime}} {{korisnik.prezime}}</b></p> <i
+                                        class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="card-block">
+                                    <h4 class="m-b-20 p-b-5 b-b-default f-w-600">Moji podaci
+                                        <button type="button" class="btn h4 "><i class="fa fa-wrench"
+                                                (click)='izmeniPodatke()' *ngIf='!flegPromena'></i>
+                                        </button>
+                                    </h4>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600"><b>Korisničko ime:</b></p>
+                                            <h6 class="text-muted f-w-400">{{korisnik.korime}}</h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600"><b>Telefon:</b></p>
+                                            <h6 class="text-muted f-w-400" *ngIf='!flegPromena'>{{korisnik.telefon}}
+                                            </h6>
+                                            <h6 class="text-muted f-w-400" *ngIf='flegPromena'><input type="text"
+                                                    [(ngModel)]='telefonPromena' name="telefonPromena"
+                                                    placeholder="{{korisnik.telefon}}" size="10"></h6>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600"><b>Adresa:</b></p>
+                                            <h6 class="text-muted f-w-400" *ngIf='!flegPromena'>{{korisnik.adresa}}</h6>
+                                            <h6 class="text-muted f-w-400" *ngIf='flegPromena'><input type="text"
+                                                    [(ngModel)]='adresaPromena' name="adresaPromena"
+                                                    placeholder="{{korisnik.adresa}}" size="15"></h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600"><b>Grad</b></p>
+                                            <h6 class="text-muted f-w-400" *ngIf='!flegPromena'>{{korisnik.grad}}</h6>
+                                            <h6 class="text-muted f-w-400" *ngIf='flegPromena'><input type="text"
+                                                    [(ngModel)]='gradPromena' name="gradPromena"
+                                                    placeholder="{{korisnik.grad}}" size="10"></h6>
+                                        </div>
+                                    </div>
+                                    <h4 class="m-b-20 p-b-5 b-b-default f-w-600">
+                                        Promena lozinke
+                                    </h4>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600"><b>Nova lozinka</b></p>
+                                            <h6 class="text-muted f-w-400" *ngIf='!flegPromena'>******</h6>
+                                            <h6 class="text-muted f-w-400" *ngIf='flegPromena'><input type="password"
+                                                    [(ngModel)]='lozinka1Promena' name="lozinka1Promena"
+                                                    placeholder="******" size="10"></h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600"><b>Ponovi lozinku</b></p>
+                                            <h6 class="text-muted f-w-400" *ngIf='!flegPromena'>******</h6>
+                                            <h6 class="text-muted f-w-400" *ngIf='flegPromena'><input type="password"
+                                                    [(ngModel)]='lozinka2Promena' name="lozinka2Promena"
+                                                    placeholder="******" size="10"></h6>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class='col-sm-4'>
+                                        </div>
+                                        <div class='col-sm-4'>
+                                            <!----------izmeniPodatkePotvrda------------->
+                                            <button type="button" class="btn h4 "><i class="fa fa-check"
+                                                    (click)='izmeniPodatkePotvrdi()' *ngIf='flegPromena'></i>
+                                            </button>
+                                        </div>
+                                        <div class='col-sm-4'>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

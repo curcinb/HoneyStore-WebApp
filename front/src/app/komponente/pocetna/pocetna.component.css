@@ -1,0 +1,10 @@
+body{
+    min-height: 80vh;
+    background-image: url(../../../assets/pozadina.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.btn, .btn:hover, .btn:active, .btn:visited {
+    background-color: rgb(245, 140, 41) !important;
+}

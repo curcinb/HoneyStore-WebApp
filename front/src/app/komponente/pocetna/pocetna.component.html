@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Početna</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <!-- Section-->
+    <section class="py-5">
+        <h1 align='center'>Proizvodi trenutno u ponudi</h1>
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" >
+                <div class="col mb-5" *ngFor='let p of sviProizvodi'>
+                    <div class="card h-300 border border-dark" 
+                    style=" background: -webkit-gradient(linear, left top, right top, from(#e9bea8), to(#ee5a6f));
+                    background: linear-gradient(to right, #f0ddc5, #f1c339);
+                    border-radius: 27.5px;">
+                        <!-- Product image-->
+                        <a href="/proizvod" (click)='proizvodRedirekcija(p.idproizvod)'><img class="card-img-top rounded border-bottom" src="../../../assets/{{p.slika}}.png"/></a>
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{p.naziv}}</h5>
+                                <!-- Product price-->
+                                {{p.cena}} rsd
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center">
+                                <a id='detaljnije' class="btn btn-outline-dark mt-auto" href="proizvod" (click)='proizvodRedirekcija(p.idproizvod)'>Detaljnije</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
