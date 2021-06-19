@@ -8,3 +8,7 @@ body{
 .btn, .btn:hover, .btn:active, .btn:visited {
     background-color: rgb(245, 140, 41) !important;
 }
+
+#dgm{
+    background-color: transparent !important;
+}

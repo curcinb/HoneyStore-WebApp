@@ -13,14 +13,14 @@ import { ProizvodComponent } from '../proizvod/proizvod.component';
 })
 export class PocetnaComponent implements OnInit {
 
-  korisnik : korisnik = null;
-  sviProizvodi : proizvod [] = null;
+  korisnik: korisnik = null;
+  sviProizvodi: proizvod[] = null;
 
-  constructor(private router: Router, private proizvodServis : ProizvodService, private korisnikServis: KorisnikService) { 
-    this.dohvatiProizvode();
+  constructor(private router: Router, private proizvodServis: ProizvodService, private korisnikServis: KorisnikService) {
+    this.dohvatiSveProizvode();
   }
 
-  ngOnInit(){
+  ngOnInit() {
     localStorage.removeItem('proizvodDetaljnije');
     if (localStorage.getItem('prodavac')) {
       this.korisnik = JSON.parse(localStorage.getItem('prodavac'));
@@ -30,8 +30,8 @@ export class PocetnaComponent implements OnInit {
     }
   }
 
-  dohvatiProizvode(){
-    this.proizvodServis.dohvatiProizvode().subscribe(data => {
+  dohvatiSveProizvode() {
+    this.proizvodServis.dohvatiSveProizvode().subscribe(data => {
       this.sviProizvodi = JSON.parse(JSON.stringify(data));
       if (this.sviProizvodi.length == 0) {
         this.sviProizvodi = null;
@@ -39,11 +39,69 @@ export class PocetnaComponent implements OnInit {
     });
   }
 
-  proizvodRedirekcija(id : number){
-    for(let i=0; i<this.sviProizvodi.length; i++){
-      if(this.sviProizvodi[i].idproizvod == id){
+  proizvodRedirekcija(id: number) {
+    for (let i = 0; i < this.sviProizvodi.length; i++) {
+      if (this.sviProizvodi[i].idProizvod == id) {
         localStorage.setItem('proizvodDetaljnije', JSON.stringify(this.sviProizvodi[i]));
       }
     }
   }
+
+  ocistiFormu() {
+    this.porukaNoviProizvod = null;
+    (<HTMLInputElement>document.getElementById("nazivProizvod")).value = "";
+    (<HTMLTextAreaElement>document.getElementById("opisProizvod")).value = "";
+    (<HTMLTextAreaElement>document.getElementById("uputstvoZaProizvod")).value = "";
+    (<HTMLInputElement>document.getElementById("cenaProizvod")).value = "";
+    (<HTMLInputElement>document.getElementById("kolicinaProizvod")).value = "";
+    //(<HTMLInputElement>document.getElementById("slikaProizvod")).value = "";
+  }
+
+  nazivProizvod: string;
+  opisProizvod: string;
+  uputstvoZaProizvod: string;
+  cenaProizvod: number;
+  kolicinaProizvod: number;
+  slikaProizvod: string;
+  porukaNoviProizvod: string;
+
+  dodavanjeNovogProizvoda() {
+    let noviProizvod: proizvod = new proizvod();
+
+    if (this.nazivProizvod == undefined) {
+      this.porukaNoviProizvod = "Niste uneli sve podatke!";
+    }
+    noviProizvod.naziv = this.nazivProizvod;
+
+    if (this.opisProizvod == undefined) {
+      this.porukaNoviProizvod = "Niste uneli sve podatke!";
+    }
+    noviProizvod.opis = this.opisProizvod;
+
+    if (this.uputstvoZaProizvod == undefined) {
+      this.porukaNoviProizvod = "Niste uneli sve podatke!";
+    }
+    noviProizvod.koriscenje = this.uputstvoZaProizvod;
+
+    if (this.cenaProizvod == undefined) {
+      this.porukaNoviProizvod = "Niste uneli sve podatke!";
+    }
+    noviProizvod.cena = this.cenaProizvod;
+
+    if (this.kolicinaProizvod == undefined) {
+      this.porukaNoviProizvod = "Niste uneli sve podatke!";
+    }
+    noviProizvod.dostupnaKolicina = this.kolicinaProizvod;
+
+    if (this.slikaProizvod == undefined) {
+      this.porukaNoviProizvod = "Niste uneli sve podatke!";
+    }
+    noviProizvod.slika = this.slikaProizvod;
+
+    this.proizvodServis.dodavanjeNovogProizvoda(noviProizvod).subscribe(data => {
+      this.sviProizvodi.unshift(noviProizvod);
+    });
+    this.porukaNoviProizvod = "Uspesno ste dodali novi proizvod!";
+  }
+
 }

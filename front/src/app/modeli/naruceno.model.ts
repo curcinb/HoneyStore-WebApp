@@ -1,6 +1,6 @@
 export class naruceno{
-    idproizvod : number;
-    idporudzbina : number;
+    idProizvod : number;
+    idPorudzbina : number;
     kolicina : number;
     ukupnaCena : number;
 }

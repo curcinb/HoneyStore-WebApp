@@ -1,1 +1,47 @@
-<p>porudzbine works!</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Porudžbine</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <br><br>
+    <h1 align='center'>Pregled porudžbina</h1>
+    <br>
+    <div class="container" style="background-color: white; border-radius: 15.5px;">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Adresa</th>
+                    <th>Grad</th>
+                    <th>Cena</th>
+                    <th>Status</th>
+                    <th>Detaljnije</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let p of svePorudzbine'>
+                    <td>{{p.idPorudzbina}}</td>
+                    <td>{{p.imeKupca}}</td>
+                    <td>{{p.prezimeKupca}}</td>
+                    <td>{{p.adresaKupca}}</td>
+                    <td>{{p.gradKupca}}</td>
+                    <td>{{p.cena}}</td>
+                    <th *ngIf='p.status==0'>Odbijena</th>
+                    <th *ngIf='p.status==1'>Na čekanju</th>
+                    <th *ngIf='p.status==2'>Prihvaćena</th>
+                    <td><a href='detaljiPorudzbine' (click)='pregledPorudzbine(p.idPorudzbina)' style="color: black;"><b>Više informacija...</b></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

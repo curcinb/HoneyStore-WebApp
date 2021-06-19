@@ -1,9 +1,11 @@
 export class proizvod{
-    idproizvod : number;
+    [x: string]: any;
+    idProizvod : number;
     slika : string;
     naziv : string;
-    cena : string;
+    cena : number;
     opis : string;
     koriscenje : string;
     dostupnaKolicina : number; 
+    porucenaKolicina : number;
 }

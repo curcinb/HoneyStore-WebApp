@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 let proizvod = new Schema({
-    idproizvod : {
+    idProizvod : {
         type : Number
     },
     slika : {

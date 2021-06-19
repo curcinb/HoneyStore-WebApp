@@ -26,6 +26,8 @@ body{
     overflow: hidden; 
     width: 70%;
     margin: 0 auto;
+    background: -webkit-gradient(linear, left top, right top, from(#e9bea8), to(#ee5a6f));
+    background: linear-gradient(to right, #f0ddc5, #f1c339);
 }
     
 .login-card-img {
@@ -35,6 +37,8 @@ body{
     height: 100%;
     -o-object-fit: cover;
     object-fit: cover; 
+    background: -webkit-gradient(linear, left top, right top, from(#e9bea8), to(#ee5a6f));
+    background: linear-gradient(to right, #f0ddc5, #f1c339);
 }
 
 .login-card .card-body {

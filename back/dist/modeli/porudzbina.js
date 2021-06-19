@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const Schema = mongoose_1.default.Schema;
 let porudzbina = new Schema({
-    idporudzbina: {
+    idPorudzbina: {
         type: Number
     },
     status: {
@@ -18,6 +18,21 @@ let porudzbina = new Schema({
     cena: {
         type: Number
     },
+    imeKupca: {
+        type: String
+    },
+    prezimeKupca: {
+        type: String
+    },
+    adresaKupca: {
+        type: String
+    },
+    gradKupca: {
+        type: String
+    },
+    telefonKupca: {
+        type: String
+    }
 });
 exports.default = mongoose_1.default.model('porudzbina', porudzbina, 'porudzbinas');
 //# sourceMappingURL=porudzbina.js.map

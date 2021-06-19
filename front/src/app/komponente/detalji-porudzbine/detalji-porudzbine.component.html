@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Pregled porudžbine</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <div class="card">
+        <!--puna korpa-->
+        <div class="row" *ngIf='proizvodiPorudzbina!=null'>
+            <div class="col-md-8 cart">
+                <div class="title">
+                    <div class="row">
+                        <div class="col">
+                            <h4><b>Porudžbina broj: {{porudzbina.idPorudzbina}}</b></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row border-top border-bottom">
+                    <div class="row main align-items-center" *ngFor='let p of proizvodiPorudzbina'>
+                        <div class="col-3"><img class="img-fluid" src="../../../assets/{{p.slika}}.png"></div>
+                        <div class="col-3">
+                            <div class="row text">{{p.naziv}}</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="row text">Količina: {{p.kolicina}}</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="row text">Cena: {{p.ukupnaCena}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="back-to-shop"><a href="porudzbine">&#x2190;<span class="text-muted">Pregled
+                            porudžbina</span></a></div>
+            </div>
+            <div class="col-md-4 summary">
+                <div class="title">
+                    <div class="row">
+                        <div class="col">
+                            <h4><b>Detalji:</b></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                    <div class="col">PROIZVODA:</div>
+                    <div class="col text-right">{{ukupnoProizvoda}}</div>
+                </div>
+                <div class="row" style="padding: 2vh 0;">
+                    <div class="col">UKUPNO:</div>
+                    <div class="col text-right">{{porudzbina.cena}} rsd</div>
+                </div>
+                <div class="row" style="border-bottom: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                    <div class="col">VREME DOSTAVE:</div>
+                    <div class="col text-right" *ngIf='porudzbina.status==1'><input id="dani" placeholder="Broj dana" value="0" [(ngModel)]='brojDana' required></div>
+                    <div class="col text-right" *ngIf='porudzbina.status==0'>Porudžbina odbijena.</div>
+                    <div class="col text-right" *ngIf='porudzbina.status==2 && porudzbina.dostava>1'>{{porudzbina.dostava}} dana</div>
+                    <div class="col text-right" *ngIf='porudzbina.status==2 && porudzbina.dostava==1'>{{porudzbina.dostava}} dan</div>
+                </div>
+                <br>
+                <div class="row " *ngIf='porudzbina.status==1'>
+                    <br>
+                    <div class='col-5' style="float: left;">
+                        <a class="btn btn-alert cart" (click)='obradiPorudzbinu(2)'>
+                            Prihvati
+                        </a>
+                    </div>
+                    <div class='col-1'>
+
+                    </div>
+                    <div class='col-5' style="float: right;;">
+                        <a class="btn btn-alert cart" (click)='obradiPorudzbinu(0)'>
+                            Odbij
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

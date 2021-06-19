@@ -6,6 +6,9 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Prikaz proizvoda</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -20,15 +23,27 @@
                     <div class="col-md-7">
                         <div class="card-body">
                             <div class="brand-wrapper">
-                                <h3>{{proizvod.naziv}}</h3>
+                                <h2 align='center'><b>{{proizvod.naziv}}</b></h2>
                             </div>
-                            <p class="login-card-description">Molimo Vas da se ulogujete.</p>
-                            <p class="login-card-description">Molimo Vas da se ulogujete.</p>
-                            <p>Molimo Vas da se ulogujete</p>
-                            <form action="#">
+                            <p class="login-card-description">Opis proizvoda:</p>
+                            <p>{{proizvod.opis}}</p>
+                            <p class="login-card-description">Način upotrebe:</p>
+                            <p>{{proizvod.koriscenje}}</p>
+                            <p class="login-card-description">Dostupno: {{proizvod.dostupnaKolicina}} komada
+                            </p>
+                            <p class="login-card-description">Cena: {{proizvod.cena}} rsd
+                            </p>
+                            <p class="login-card-description" *ngIf='kupac'>Količina:
+                                <input id="number" type="number" min="1" max="99" 
+                                value="1" size='3' width="3" 
+                                placeholder='1'
+                                style="width: 65px;" [(ngModel)]='kolicina'>
+                            </p>
+                            <form action="#" *ngIf='kupac'>
                                 <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit"
-                                    value="Dodaj u korpu" (click)='proba()'>
+                                    value="Dodaj u korpu" (click)='dodajUKorpu()' >
                             </form>
+                           <h6 align='center' style="color: red;" *ngIf='!kupac && !prodavac'><b>Ulogujte se da biste porucili.</b></h6>
                         </div>
                     </div>
                 </div>

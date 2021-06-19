@@ -1,6 +1,11 @@
 export class porudzbina{
-    idporudzbina : number;
+    idPorudzbina : number;
     status : number;
     dostava : number;
     cena : number;
+    imeKupca : string;
+    prezimeKupca : string;
+    adresaKupca : string;
+    gradKupca : string;
+    telefonKupca : string;
 }

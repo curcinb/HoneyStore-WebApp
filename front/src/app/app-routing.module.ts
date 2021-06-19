@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DetaljiPorudzbineComponent } from './komponente/detalji-porudzbine/detalji-porudzbine.component';
 import { KorpaComponent } from './komponente/korpa/korpa.component';
 import { LoginComponent } from './komponente/login/login.component';
-import { NoviproizvodComponent } from './komponente/noviproizvod/noviproizvod.component';
 import { PocetnaComponent } from './komponente/pocetna/pocetna.component';
 import { PorudzbineComponent } from './komponente/porudzbine/porudzbine.component';
 import { ProfilComponent } from './komponente/profil/profil.component';
@@ -15,8 +15,8 @@ const routes: Routes = [
   {path: 'korpa', component: KorpaComponent},
   {path: 'proizvod', component: ProizvodComponent},
   {path: 'porudzbine', component: PorudzbineComponent},
-  {path: 'noviproizvod', component: NoviproizvodComponent},
   {path: 'pocetna', component: PocetnaComponent},
+  {path: 'detaljiPorudzbine', component: DetaljiPorudzbineComponent},
 ];
 
 @NgModule({

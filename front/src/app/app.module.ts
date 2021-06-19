@@ -11,7 +11,7 @@ import { ProfilComponent } from './komponente/profil/profil.component';
 import { KorpaComponent } from './komponente/korpa/korpa.component';
 import { ProizvodComponent } from './komponente/proizvod/proizvod.component';
 import { PorudzbineComponent } from './komponente/porudzbine/porudzbine.component';
-import { NoviproizvodComponent } from './komponente/noviproizvod/noviproizvod.component';
+import { DetaljiPorudzbineComponent } from './komponente/detalji-porudzbine/detalji-porudzbine.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { NoviproizvodComponent } from './komponente/noviproizvod/noviproizvod.co
     KorpaComponent,
     ProizvodComponent,
     PorudzbineComponent,
-    NoviproizvodComponent,
+    DetaljiPorudzbineComponent,
   ],
   imports: [
     BrowserModule,

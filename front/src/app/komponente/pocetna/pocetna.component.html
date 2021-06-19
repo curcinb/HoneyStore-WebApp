@@ -12,15 +12,21 @@
     <!-- Section-->
     <section class="py-5">
         <h1 align='center'>Proizvodi trenutno u ponudi</h1>
+        <h6 align='center'>
+            <div class="btn btn-link" id='dgm' data-toggle="modal" data-target="#noviproizvod"
+                style="width: 100; margin: auto; color: brown;">
+                Dodavanje novog proizvoda <i class="fa fa-pencil" *ngIf='korisnik.privilegovani==1'></i>
+            </div>
+        </h6>
         <div class="container px-4 px-lg-5 mt-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" >
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <div class="col mb-5" *ngFor='let p of sviProizvodi'>
-                    <div class="card h-300 border border-dark" 
-                    style=" background: -webkit-gradient(linear, left top, right top, from(#e9bea8), to(#ee5a6f));
+                    <div class="card h-300 border border-dark" style="background: -webkit-gradient(linear, left top, right top, from(#e9bea8), to(#ee5a6f));
                     background: linear-gradient(to right, #f0ddc5, #f1c339);
                     border-radius: 27.5px;">
                         <!-- Product image-->
-                        <a href="/proizvod" (click)='proizvodRedirekcija(p.idproizvod)'><img class="card-img-top rounded border-bottom" src="../../../assets/{{p.slika}}.png"/></a>
+                        <a href="/proizvod" (click)='proizvodRedirekcija(p.idProizvod)'><img
+                                class="card-img-top rounded border-bottom" src="../../../assets/{{p.slika}}.png" /></a>
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -33,7 +39,8 @@
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center">
-                                <a id='detaljnije' class="btn btn-outline-dark mt-auto" href="proizvod" (click)='proizvodRedirekcija(p.idproizvod)'>Detaljnije</a>
+                                <a id='detaljnije' class="btn btn-outline-dark mt-auto" href="proizvod"
+                                    (click)='proizvodRedirekcija(p.idProizvod)'>Detaljnije</a>
                             </div>
                         </div>
                     </div>
@@ -41,6 +48,96 @@
             </div>
         </div>
     </section>
+    <!--Dodavanje nove vesti-->
+    <div class="modal fade" id="noviproizvod" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Dodavanje novog proizvoda</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" (click)='ocistiFormu()'>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id='noviProizvodKola'>
+                        <table>
+                            <tr>
+                                <td> Naziv:</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" id="nazivProizvod" [(ngModel)]='nazivProizvod' name="Naziv"
+                                        size="40">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> Opis proizvoda:</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <textarea id="opisProizvod" [(ngModel)]='opisProizvod' name="Opis"
+                                        style='width: 410px;'></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> Uputstvo za upotrebu:</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <textarea id="uputstvoZaProizvod" [(ngModel)]='uputstvoZaProizvod' name="Uputstvo"
+                                        style='width: 410px;'></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> Cena:</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="number" id="cenaProizvod" [(ngModel)]='cenaProizvod' name="Cena"
+                                        size="40" style='width: 410px;'>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> Dostupna količina:</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="number" id="kolicinaProizvod" [(ngModel)]='kolicinaProizvod'
+                                        name="Kolicina" size="40" style='width: 410px;'>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> Odaberi sliku:</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select style='width: 410px;' [(ngModel)]='slikaProizvod' name='Slika' value='Odaberi'>
+                                        <option class="text-muted" value="med1cisto" name='slika1'>Slika1</option>
+                                        <option class="text-muted" value="med2cisto" name='slika2'>Slika2</option>
+                                        <option class="text-muted" value="med3cisto" name='slika3'>Slika3</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                    <div style="text-align:center">
+                        <span style='color: red'>
+                            {{porukaNoviProizvod}}
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)='ocistiFormu()'>
+                        Zatvori
+                    </button>
+                    <button type="button" class="btn btn-primary" (click)='dodavanjeNovogProizvoda()'>
+                        Dodaj
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//Dodavanje nove vesti-->
 </body>
 
 </html>

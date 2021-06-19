@@ -1,12 +1,106 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>Pregled korpe</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
+
 <body>
+    <div class="card">
+        <!--prazna korpa-->
+        <div class="row">
+            <div class="container-fluid mt-100" *ngIf='proizvodiKorpa==null'>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div style="background-color: transparent; border: none;">
+                            <div class="card-body cart" style=" background: -webkit-gradient(linear, left top, right top, from(#e9bea8), to(#ee5a6f));
+                            background: linear-gradient(to right, #f0ddc5, #f1c339);">
+                                <div class="col-sm-12 empty-cart-cls text-center"> <img
+                                        src="https://i.imgur.com/dCdflKN.png" width="130" height="130"
+                                        class="img-fluid mb-4 mr-3">
+                                    <h3><strong>Vaša korpa je trenutno prazna!</strong></h3>
+                                    <h4>Dodajte proizvode.</h4>
+                                    <a href="#" class="btn btn-primary cart-btn-transform m-3">
+                                        Nazad na početnu
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--puna korpa-->
+        <div class="row" *ngIf='proizvodiKorpa!=null'>
+            <div class="col-md-8 cart">
+                <div class="title">
+                    <div class="row">
+                        <div class="col">
+                            <h4><b>Moja korpa</b></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row border-top border-bottom">
+                    <div class="row main align-items-center" *ngFor='let p of proizvodiKorpa'>
+                        <div class="col-3"><img class="img-fluid" src="../../../assets/{{p.slika}}.png"></div>
+                        <div class="col-3">
+                            <div class="row text">{{p.naziv}}</div>
+                        </div>
+                        <div class='col-3' style='padding-top: 35px;'>
+                            <input id="number" type="number" min="1" max="99" value="1" size='3' width="3"
+                                placeholder='1' style="width: 65px;" [(ngModel)]='p.porucenaKolicina' (click)='promenaCene()'>
+                        </div>
+                        <div class="col-3 align-items-right" style="float: right;">
+                            {{p.porucenaKolicina * p.cena}} rsd <!--<span class="close">&#10005;</span>-->
+                            <button type="button" class="btn-link" (click)='obrisiProizvodIzKorpe(p.idProizvod)' style="width: 30px;">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="back-to-shop"><a href="#">&#x2190;<span class="text-muted">Nastavi kupovinu</span></a></div>
+            </div>
+            <div class="col-md-4 summary">
+                <div class="title">
+                    <div class="row">
+                        <div class="col">
+                            <h4><b>Porudžbina:</b></h4>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col" style="padding-left:0;">PROIZVODA: {{proizvodiKorpa.length}}</div>
+                </div>
+                <form>
+                    <p>DOSTAVA:</p> <select>
+                        <option class="text-muted">PostExpress</option>
+                        <option class="text-muted">Bex</option>
+                        <option class="text-muted">Aks</option>
+                    </select>
+                    <p>KOD ZA POPUST:</p> <input id="code" placeholder="Opciono">
+                </form>
+                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                    <div class="col">UKUPNO:</div>
+                    <div class="col text-right" *ngIf='ukupnaCena; else stillLoading;'>{{ukupnaCena}} rsd</div>
+                </div>
+                <div class="row">
+                    <div class='col-2'>
+                    </div>
+                    <div class='col-8'>
+                        <a class="btn btn-primary cart-btn-transform m-3" (click)='izvrsiPorudzbinu()'>
+                            Poruči
+                        </a>
+                    </div>
+                    <div class='col-2'>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

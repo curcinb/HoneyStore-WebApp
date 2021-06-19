@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 let porudzbina = new Schema({
-    idporudzbina : {
+    idPorudzbina : {
         type : Number
     },
     status : {
@@ -15,6 +15,21 @@ let porudzbina = new Schema({
     cena : {
         type : Number
     },
+    imeKupca : {
+        type : String
+    },
+    prezimeKupca : {
+        type : String
+    },
+    adresaKupca : {
+        type : String
+    },
+    gradKupca : {
+        type : String
+    },
+    telefonKupca : {
+        type : String
+    }
 });
 
 export default mongoose.model('porudzbina', porudzbina, 'porudzbinas');
