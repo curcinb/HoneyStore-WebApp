@@ -12,7 +12,7 @@
     <!-- Section-->
     <section class="py-5">
         <h1 align='center'>Proizvodi trenutno u ponudi</h1>
-        <h6 align='center'>
+        <h6 align='center' *ngIf='korisnik'>
             <div class="btn btn-link" id='dgm' data-toggle="modal" data-target="#noviproizvod"
                 style="width: 100; margin: auto; color: brown;">
                 Dodavanje novog proizvoda <i class="fa fa-pencil" *ngIf='korisnik.privilegovani==1'></i>
